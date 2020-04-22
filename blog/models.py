@@ -6,12 +6,16 @@ from django.db import models
 from django.utils import timezone
 
 
+
 class Post(models.Model):
     author = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
     title = models.CharField(max_length=200)
+    slug = models.SlugField(max_length = 250, null = True, blank = True)
     text = models.TextField()
+    headshot = models.ImageField(null=True, blank=True, upload_to="images/")
     created_date = models.DateTimeField(default=timezone.now)
     published_date = models.DateTimeField(blank=True, null=True)
+     
 
     def publish(self):
         self.published_date = timezone.now()
@@ -19,3 +23,17 @@ class Post(models.Model):
 
     def __str__(self):
         return self.title
+    
+
+
+# def pre_save_receiver(sender, instance, *args, **kwargs): 
+#    if not instance.slug: 
+#        instance.slug = unique_slug_generator(instance) 
+  
+  
+# pre_save.connect(pre_save_receiver, sender = Post) 
+
+
+
+
+
