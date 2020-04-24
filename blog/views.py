@@ -10,6 +10,10 @@ def post_list(request):
 def post_home(request):
     posts = Post.objects.filter(published_date__lte=timezone.now()).order_by('-published_date')
     return render(request, 'blog/home.html', {'posts': posts})   
+
+def post_me(request):
+    posts = Post.objects.filter(published_date__lte=timezone.now()).order_by('-published_date')
+    return render(request, 'blog/about.html', {'posts': posts})
     
 # def post_detail(request, pk):
 #     post = get_object_or_404(Post, pk=pk)
