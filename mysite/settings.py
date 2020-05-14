@@ -28,7 +28,8 @@ DEBUG = True
 TIME_ZONE = 'Asia/Kolkata'
 LANGUAGE_CODE = 'en-us'
 
-ALLOWED_HOSTS = ['127.0.0.1', '.herokuapp.com']
+ALLOWED_HOSTS = [*]
+# ALLOWED_HOSTS = ['127.0.0.1', '.herokuapp.com']
 
 
 # Application definition
