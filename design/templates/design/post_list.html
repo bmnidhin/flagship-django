@@ -1,13 +1,72 @@
-{% extends 'projects/base.html' %}
 
+{% extends 'design/base.html' %}
 {% block content %}
-    {% for post in posts %}
-        <div class="post">
-            <div class="date">
-                {{ post.published_date }}
-            </div>
-            <h2><a href="{% url 'post_detail' pk=post.pk %}">{{ post.title }}</a></h2>
-            <p>{{ post.text|linebreaksbr }}</p>
+<section class="pt-8 pt-md-12 pb-12 pb-md-15">
+    <div class="container">
+      <div class="row justify-content-center">
+        <div class="col-12 col-md-10 col-lg-8 text-center">
+
+          <!-- Headin -->
+          <h1 class="display-1 font-weight-bold">
+            Our Work.
+          </h1>
+
+          <!-- Text -->
+          <p class="lead text-secondary mb-4">
+            We design &amp; build products, tools, apps, and sites for companies trying to do great things for our planet.
+          </p>
+
+          <!-- Badges -->
+          <nav class="nav justify-content-center">
+            <a class="badge badge-pill badge-secondary-soft mr-1 mb-1 active" href="#" data-toggle="pill" data-filter="*" data-target="#portfolio">
+              <span class="h6 text-uppercase">All</span>
+            </a>
+            <a class="badge badge-pill badge-secondary-soft mr-1 mb-1" href="#" data-toggle="pill" data-filter=".Poster" data-target="#portfolio">
+              <span class="h6 text-uppercase">Poster</span>
+            </a>
+            <a class="badge badge-pill badge-secondary-soft mr-1 mb-1" href="#" data-toggle="pill" data-filter=".UX" data-target="#portfolio">
+              <span class="h6 text-uppercase">UX</span>
+            </a>
+            <a class="badge badge-pill badge-secondary-soft mr-1 mb-1" href="#" data-toggle="pill" data-filter=".Brand" data-target="#portfolio">
+              <span class="h6 text-uppercase">Branding</span>
+            </a>
+          </nav>
+
         </div>
-    {% endfor %}
+      </div> <!-- / .row -->
+    </div> <!-- / .container -->
+  </section>
+  <section class="py-8 py-md-11 mt-n10 mt-md-n14">
+    <div class="container">
+      <div class="row active" id="portfolio" data-isotope="{&quot;layoutMode&quot;: &quot;fitRows&quot;}" style="position: relative; height: 1182.7px;">
+        {% for post in posts %}
+        <div class="col-12 col-md-4 {{post.Type_of_creation}}" style="position: absolute; left: 0px; top: 0px;">
+
+          <!-- Card -->
+          <a class="card card-flush mb-7" href="{% url 'design_detail' slug=post.slug %}">
+
+            <!-- Image -->
+            <div class="card-zoom">
+              <img class="card-img-top rounded shadow-light-lg" src="{{post.file_image}}" alt="...">
+            </div>
+
+            <!-- Footer -->
+            <div class="card-footer">
+
+              <!-- Preheading -->
+              <h6 class="text-uppercase mb-1 text-muted">{{post.Type_of_creation}}</h6>
+
+              <!-- Heading -->
+              <h4 class="mb-0">{{post.title}}</h4>
+
+            </div>
+
+          </a>
+
+        </div>
+        {% endfor %}
+        
+      </div>
+    </div>
+  </section>
 {% endblock %}
