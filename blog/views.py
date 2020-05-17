@@ -3,13 +3,22 @@ from django.utils import timezone
 from .models import Post
 from django.shortcuts import render, get_object_or_404
 
+from django.views.generic import View
+from django.http import HttpResponse # Add this
+
+from .forms import ContactForm # Add this
+
 def post_list(request):
     posts = Post.objects.filter(published_date__lte=timezone.now()).order_by('-published_date')
     return render(request, 'blog/post_list.html', {'posts': posts})
     
 def post_home(request):
-    posts = Post.objects.filter(published_date__lte=timezone.now()).order_by('-published_date')
+    posts = Post.objects.filter(published_date__lte=timezone.now()).order_by('-published_date')[0:3]
     return render(request, 'blog/home.html', {'posts': posts})   
+
+def post_contact(request):
+    posts = Post.objects.filter(published_date__lte=timezone.now()).order_by('-published_date')
+    return render(request, 'blog/about.html', {'posts': posts})
 
 def post_me(request):
     posts = Post.objects.filter(published_date__lte=timezone.now()).order_by('-published_date')
@@ -39,3 +48,13 @@ def post_detail(request, slug):
 #        'post': q 
 #    } 
 #    return render(request, 'blog/post_detail.html', context)
+# def contact_us(request):
+#     if request.method == 'POST':
+#         form = ContactForm(request.POST)
+#         if form.is_valid():
+#             # send email code goes here
+#             return HttpResponse('Thanks for contacting us!')
+#     else:
+#         form = ContactForm()
+
+#     return render(request, 'blog/about.html', {'form': form})
