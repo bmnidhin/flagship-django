@@ -26,7 +26,7 @@
   <!-- End Google Tag Manager -->
   <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <!-- <link href='https://hsezoology.blogspot.com/favicon.ico' rel='icon' type='image/x-icon'/> -->
+    <link href='https://firebasestorage.googleapis.com/v0/b/jetgreen-98863.appspot.com/o/ni.ico?alt=media&token=bcc3068d-dd3b-4c10-8220-7033d8cc23ef' rel='icon' type='image/x-icon'/>
     <link href='bmnidhin.herokuapp.com{{ request.path }}' rel='canonical'/>
     <meta content='bmnidhin.herokuapp.com{{ request.path }}' property='og:url'/>
     <meta content='{{ post.title | default:"Me" }} - Nidhin BM' property='og:title'/>
@@ -354,7 +354,29 @@
 
     <!-- Theme JS -->
     <script src="{% static '/js/theme.min.js' %} "></script>
+    <!-- The core Firebase JS SDK is always required and must be listed first -->
+<script src="https://www.gstatic.com/firebasejs/7.14.4/firebase-app.js"></script>
 
+<!-- TODO: Add SDKs for Firebase products that you want to use
+     https://firebase.google.com/docs/web/setup#available-libraries -->
+<script src="https://www.gstatic.com/firebasejs/7.14.4/firebase-analytics.js"></script>
+
+<script>
+  // Your web app's Firebase configuration
+  var firebaseConfig = {
+    apiKey: "AIzaSyAXXon5K0tYbKk-sQVQ1d_-9zz9L0l7SIE",
+    authDomain: "jetgreen-98863.firebaseapp.com",
+    databaseURL: "https://jetgreen-98863.firebaseio.com",
+    projectId: "jetgreen-98863",
+    storageBucket: "jetgreen-98863.appspot.com",
+    messagingSenderId: "1000962137414",
+    appId: "1:1000962137414:web:38359d634d9b25b8311947",
+    measurementId: "G-XT21QPFRW1"
+  };
+  // Initialize Firebase
+  firebase.initializeApp(firebaseConfig);
+  firebase.analytics();
+</script>
       
   </body>
 
