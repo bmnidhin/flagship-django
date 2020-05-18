@@ -61,7 +61,15 @@
    
   
    <script type='text/javascript' src='https://platform-api.sharethis.com/js/sharethis.js#property=5d176802ff2f050012eebf9a&product=inline-share-buttons&cms=website' async='async'></script>
-
+   <script src="https://cdn.onesignal.com/sdks/OneSignalSDK.js" async=""></script>
+   <script>
+     var OneSignal = window.OneSignal || [];
+     OneSignal.push(function() {
+       OneSignal.init({
+         appId: "09fcfc2c-e4c3-45e0-92de-cc2bf77c4610",
+       });
+     });
+   </script>
   </head>
   <body>
     <!-- Google Tag Manager (noscript) -->
