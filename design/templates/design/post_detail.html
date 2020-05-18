@@ -1,13 +1,194 @@
-{% extends 'projects/base.html' %}
+
+{% extends 'design/base.html' %}
 
 {% block content %}
-    <div class="post">
-        {% if post.published_date %}
-            <div class="date">
-                {{ post.published_date }}
+<div class="container">
+    <div class="row justify-content-between">
+      <div class="col-12 col-md-4 position-md-sticky d-flex align-items-center vh-md-100" style="top: 0;">
+
+        <!-- Sidebar -->
+        <aside class="py-8 py-md-10">
+
+          <!-- Brand -->
+          <div class="img-fluid mb-4 text-body svg-shim" style="max-width: 140px;">
+           <h2>{{post.title}}</h2>
+          </div>
+
+          <!-- Text -->
+          <p class="font-size-lg mb-7 text-muted">
+            {{post.text|truncatechars:250}}
+          </p>
+
+          <!-- List group -->
+          <ul class="list-group list-group-flush">
+            <li class="list-group-item">
+
+              <!-- Heading -->
+              <h6 class="d-flex mb-0 text-uppercase">
+                Type <span class="ml-auto">{{post.Type_of_creation}}</span>
+              </h6>
+
+            </li>
+            <li class="list-group-item">
+
+              <!-- Heading -->
+              <h6 class="d-flex mb-0 text-uppercase">
+                Made for <span class="ml-auto">{{post.made_for}}</span>
+              </h6>
+
+            </li>
+            <li class="list-group-item">
+
+              <!-- Heading -->
+              <h6 class="d-flex mb-0 text-uppercase">
+                Tools <span class="ml-auto">{{post.tools}}</span>
+              </h6>
+
+            </li>
+            <li class="list-group-item">
+            {% if post.button_text%}
+           
+            <div class="text-center text-md-left">
+              <a href="{{post.button_link}}" class="btn btn-primary shadow lift mr-1" data-toggle="smooth-scroll">
+                {{post.button_text}}<i class="fe fe-arrow-right d-none d-md-inline ml-3"></i>
+              </a>
+             
             </div>
-        {% endif %}
-        <h2>{{ post.title }}</h2>
-        <p>{{ post.text|linebreaksbr }}</p>
+  
+            {% endif %}
+            </li>
+          </ul>
+
+        </aside>
+
+      </div>
+      <div class="col-12 col-md-7">
+
+        <!-- Images -->
+        <section class="pb-8 pt-md-12 pb-md-10">
+          <a class="d-block" data-fancybox="" data-width="840" data-heigt="1000" href="#">
+            <img class="img-fluid rounded" src="{{post.file_image}}" alt="...">
+          </a>
+      
+        </section>
+       
+      </div>
     </div>
+  </div>
+  <section class="pt-7 pt-md-10 bg-light">
+    <div class="container">
+      <div class="row align-items-center mb-5">
+        <div class="col-12 col-md">
+
+          <!-- Heading -->
+          <h3 class="mb-0">
+            Related Work 🖌️
+          </h3>
+
+          <!-- Text -->
+          <p class="mb-0 text-muted">
+            Other goodies that are similar to this one.
+          </p>
+
+        </div>
+        <div class="col-12 col-md-auto">
+
+          <!-- Button -->
+          <a href="{% url 'design_list' %}" class="btn btn-sm btn-outline-gray-300 d-none d-md-inline">
+            View all
+          </a>
+
+        </div>
+      </div> <!-- / .row -->
+      <div class="row">
+        <div class="col-12 col-md-6 col-lg-4 d-flex">
+
+          <!-- Card -->
+          <a class="card mb-6 mb-lg-0 shadow-light-lg" href="{{post.related_one_link}}">
+
+            <!-- Image -->
+            <div class="card-zoom">
+              <img class="card-img-top" src="{{post.related_one_Photo}}" alt="...">
+            </div>
+
+            <!-- Body -->
+            <div class="card-body">
+
+              <!-- Shape -->
+              <div class="shape shape-bottom-100 shape-fluid-x svg-shim text-white">
+                <svg viewBox="0 0 2880 48" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M0 48h2880V0h-720C1442.5 52 720 0 720 0H0v48z" fill="currentColor"></path></svg>
+              </div>
+
+              <!-- Preheading -->
+              <h6 class="text-uppercase mb-1 text-muted">{{post.related_two_category}}</h6>
+
+              <!-- Heading -->
+              <h4 class="mb-0">{{post.related_one_title}}</h4>
+
+            </div>
+
+          </a>
+
+        </div>
+        <div class="col-12 col-md-6 col-lg-4 d-flex">
+
+          <!-- Card -->
+          <a class="card mb-6 mb-lg-0 shadow-light-lg" href="{{post.related_two_title}}">
+
+            <!-- Image -->
+            <div class="card-zoom">
+              <img class="card-img-top" src="{{post.related_two_Photo}}" alt="...">
+            </div>
+
+            <!-- Body -->
+            <div class="card-body">
+
+              <!-- Shape -->
+              <div class="shape shape-bottom-100 shape-fluid-x svg-shim text-white">
+                <svg viewBox="0 0 2880 48" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M0 48h2880V0h-720C1442.5 52 720 0 720 0H0v48z" fill="currentColor"></path></svg>
+              </div>
+
+              <!-- Preheading -->
+              <h6 class="text-uppercase mb-1 text-muted">{{post.related_two_category}}</h6>
+
+              <!-- Heading -->
+              <h4 class="mb-0">{{post.related_two_title}}</h4>
+
+            </div>
+
+          </a>
+
+        </div>
+        <div class="col-12 col-md-6 col-lg-4 d-flex">
+
+          <!-- Card -->
+          <a class="card d-md-none d-lg-flex shadow-light-lg" href="{{post.related_three_link}}">
+
+            <!-- Image -->
+            <div class="card-zoom">
+              <img class="card-img-top" src="{{post.related_three_Photo}}" alt="...">
+            </div>
+
+            <!-- Body -->
+            <div class="card-body">
+
+              <!-- Shape -->
+              <div class="shape shape-bottom-100 shape-fluid-x svg-shim text-white">
+                <svg viewBox="0 0 2880 48" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M0 48h2880V0h-720C1442.5 52 720 0 720 0H0v48z" fill="currentColor"></path></svg>
+              </div>
+
+              <!-- Preheading -->
+              <h6 class="text-uppercase mb-1 text-muted">{{post.related_three_category}}</h6>
+
+              <!-- Heading -->
+              <h4 class="mb-0"> {{post.related_three_title}}</h4>
+
+            </div>
+
+          </a>
+
+        </div>
+      </div> <!-- / .row -->
+    </div> <!-- / .container -->
+  </section>
 {% endblock %}

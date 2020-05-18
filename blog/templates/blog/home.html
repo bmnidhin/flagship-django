@@ -1,14 +1,412 @@
 {% extends 'blog/base.html' %}
 
 {% block content %}
-    {% for post in posts %}
-        <div class="post">
-            <h1>Homepage</h1>
-            <div class="date">
-                {{ post.published_date }}
-            </div>
-            <h2><a href="{% url 'post_detail' slug=post.slug %}">{{ post.title }}</a></h2>
-            <p>{{ post.text|linebreaksbr }}</p>
+<section class="pt-4 pt-md-11">
+    <div class="container">
+      <div class="row align-items-center">
+        <div class="col-12 col-md-5 col-lg-6 order-md-2">
+
+          <!-- Image -->
+          <img src="https://landkit.goodthemes.co/assets/img/illustrations/illustration-2.png " class="img-fluid mw-md-150 mw-lg-130 mb-6 mb-md-0 aos-init aos-animate" alt="..." data-aos="fade-up" data-aos-delay="100">
+
         </div>
-    {% endfor %}
+        <div class="col-12 col-md-7 col-lg-6 order-md-1 aos-init aos-animate" data-aos="fade-up">
+
+          <!-- Heading -->
+          <h1 class="display-3 text-center text-md-left">
+            I deliver <br>
+            <span class="text-primary" data-toggle="typed" data-options='{"strings": ["UX Designes", "Graphic Designes", "Front End Websites", "IoT Solutions"]}'></span>
+          </h1>
+
+          <!-- Text -->
+          <p class="lead text-center text-md-left text-muted mb-6 mb-lg-8">
+           I am a B-Tech Electronics and Communication student From TKM College of Engineering Kollam, Kerala 👋👋
+          </p>
+
+          <!-- Buttons -->
+          <div class="text-center text-md-left">
+            <a href="#project-spaces" class="btn btn-primary shadow lift mr-1"data-toggle="smooth-scroll">
+              View My Projects <i class="fe fe-arrow-right d-none d-md-inline ml-3"></i>
+            </a>
+            <a href="{% url 'post_me' %}" class="btn btn-primary-soft lift">
+              About Me
+            </a>
+          </div>
+          <div class=""><br><br><br></div>
+        </div>
+      </div> <!-- / .row -->
+    </div> <!-- / .container -->
+  </section>
+
+<section class="pt-8 pt-md-11 bg-gradient-light"id="project-spaces">
+    <div class="container">
+      <div class="row justify-content-center">
+        <div class="col-12 col-md-10 col-lg-8 text-center">
+          
+          <!-- Badge -->
+          <span class="badge badge-pill badge-success-soft mb-3">
+            <span class="h6 text-uppercase">BUILD</span>
+          </span>
+
+          <!-- Heading -->
+          <h1>
+            Project Spaces 
+          </h1>
+
+          <!-- Text -->
+          <p class="font-size-lg text-gray-700 mb-7 mb-md-9">
+            My Recent Projects 👨‍💻 are showcased here 
+          </p>
+
+        </div>
+      </div> <!-- / .row -->
+      <div class="row">
+        {% for post in posts %}
+        
+
+
+
+        <div class="col-12 col-md-4 aos-init aos-animate" data-aos="fade-up">
+          
+          <!-- Card -->
+          <div class="card shadow-light-lg mb-6 mb-md-0 lift lift-lg card-image-top">
+            
+            <!-- Image -->
+            <div class="card-image-top">
+              <img src="{{post.image_link}}" alt="..." class="card-img-top rounded shadow-light-lg ">
+            </div>
+            
+
+            <!-- Shape -->
+            <div class="position-relative">
+              <div class="shape shape-bottom shape-fluid-x svg-shim text-white">
+                <svg viewBox="0 0 2880 48" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M0 48h2880V0h-720C1442.5 52 720 0 720 0H0v48z" fill="currentColor"></path></svg>
+              </div>
+            </div>
+
+            <!-- Body -->
+            <div class="card-body position-relative">
+
+              <!-- Badge -->
+              <div class="position-relative text-right mt-n8 mr-n4 mb-3">
+                <span class="badge badge-pill badge-success">
+                  <!-- <span class="h6 text-uppercase">$49/mo</span> -->
+                </span>
+              </div>
+              
+              <!-- Heading -->
+              <h3>
+                {{post.title|truncatechars:24}}
+              </h3>
+
+              <!-- Text -->
+              <p class="text-muted">
+                {{post.text|truncatechars:150}}
+              </p>
+
+              <!-- Link -->
+              <a href="{% url 'post_detail' slug=post.slug %}" class="font-weight-bold text-decoration-none">
+                View Post <i class="fe fe-arrow-right ml-3"></i>
+              </a>
+
+            </div>
+
+          </div>
+
+        </div>
+        {% endfor %}
+        
+      </div> <!-- / .row -->
+    </div> <!-- / .container -->
+  </section>
+
+  <section class="pt-8 pt-md-10" id="about">
+    <div class="container">
+      <div class="row">
+        <div class="col-12 text-center">
+          
+          <!-- Button -->
+          <a href="#about" class="btn btn-white btn-rounded-circle shadow mt-n12 mt-md-n14" data-toggle="smooth-scroll">
+            <i class="fe fe-arrow-down"></i>
+          </a>
+
+        </div>
+      </div> <!-- / .row -->
+      <div class="row justify-content-center">
+        <div class="col-12 col-md-10 col-lg-8 text-center">
+          
+          <!-- Heading -->
+          <h2 class="font-weight-bold">
+            Your Friendly Neighbourhood <span class="text-primary">Developer</span>.
+          </h2>
+
+          <!-- Text -->
+          <p class="font-size-lg text-muted mb-9">
+            I am currently focused on following domains
+          </p>
+
+        </div>
+      </div> <!-- / .row -->
+      <div class="row">
+        <div class="col-12 col-lg-6">
+          
+          <!-- Item -->
+          <div class="row align-items-center mb-8 aos-init aos-animate" data-aos="fade-up">
+            <div class="col-4 col-lg-5">
+              
+              <!-- Image -->
+              <img src="https://firebasestorage.googleapis.com/v0/b/jetgreen-98863.appspot.com/o/developer.png?alt=media&token=bb90c461-2f5d-4acf-9600-a0d0660d7e52" alt="..." class="img-fluid">
+
+            </div>
+            <div class="col-8 col-lg-7">
+              
+              <!-- Heading -->
+              <h3 class="font-weight-bold mb-2">
+                Front-end Web Development
+              </h3>
+
+              <!-- Text -->
+              <p class="text-gray-700 mb-0">
+               Beautiful user interfaces and user experince for your projects with ReactJs,Angular,Bootstrap, UIKit etc.
+              </p>
+
+            </div>
+          </div> <!-- / .row -->
+
+          <!-- Item -->
+          <div class="row align-items-center mb-8 aos-init aos-animate" data-aos="fade-up">
+            <div class="col-4 col-lg-5">
+              
+              <!-- Image -->
+              <img src="https://firebasestorage.googleapis.com/v0/b/jetgreen-98863.appspot.com/o/robot.png?alt=media&token=09aa1ab2-d276-4edb-97e0-b9d56f744963" alt="..." class="img-fluid">
+
+            </div>
+            <div class="col-8 col-lg-7">
+              
+              <!-- Heading -->
+              <h3 class="font-weight-bold mb-2">
+                Internet of Things 
+              </h3>
+
+              <!-- Text -->
+              <p class="text-gray-700 mb-0">
+                Build electronic devices with Arduino, Raspbery Pi etc
+              </p>
+
+            </div>
+          </div> <!-- / .row -->
+
+
+        </div>
+        <div class="col-12 col-lg-6">
+          <!-- Item -->
+          <div class="row align-items-center mb-8 aos-init aos-animate" data-aos="fade-up">
+            <div class="col-4 col-lg-5">
+              
+              <!-- Image -->
+              <img src="https://firebasestorage.googleapis.com/v0/b/jetgreen-98863.appspot.com/o/graphic.png?alt=media&token=ddf3e7de-920a-464a-b971-238d1411ceef" alt="..." class="img-fluid">
+
+            </div>
+            <div class="col-8 col-lg-7">
+              
+              <!-- Heading -->
+              <h3 class="font-weight-bold mb-2">
+                Graphic Designing
+              </h3>
+
+              <!-- Text -->
+              <p class="text-gray-700 mb-0">
+                Reach maximum audiance with beautifully designed assets for events
+              </p>
+
+            </div>
+          </div> <!-- / .row -->
+
+          <!-- Item -->
+          <div class="row align-items-center mb-8 aos-init aos-animate" data-aos="fade-up">
+            <div class="col-4 col-lg-5">
+              
+              <!-- Image -->
+              <img src="https://firebasestorage.googleapis.com/v0/b/jetgreen-98863.appspot.com/o/ux.png?alt=media&token=990fcfb0-fb08-4621-853f-bd9d085c20d6" alt="..." class="img-fluid">
+
+            </div>
+            <div class="col-8 col-lg-7">
+              
+              <!-- Heading -->
+              <h3 class="font-weight-bold mb-2">
+                Brand Identity / UI Design
+              </h3>
+
+              <!-- Text -->
+              <p class="text-gray-700 mb-0">
+                Logos, Brand assets, UI/UX for your Brand ans startup
+              </p>
+
+            </div>
+          </div> <!-- / .row -->
+
+        </div>
+      </div> <!-- / .row -->
+    </div> <!-- / .container -->
+  </section>
+
+  <section class="pt-8 pt-md-11">
+    <div class="container">
+      <div class="row justify-content-center">
+        <div class="col-12 col-md-10 col-lg-8 text-center">
+          
+          <!-- Badge -->
+          <span class="badge badge-pill badge-success-soft mb-3">
+            <span class="h6 text-uppercase">Tools</span>
+          </span>
+
+          <!-- Heading -->
+          <h2 class="font-weight-bold">
+            My Favorite Tools for Development
+          </h2>
+
+          <!-- Text -->
+          <p class="font-size-lg text-gray-700 mb-9">
+            Faster, safer and Open 😚
+          </p>
+
+        </div>
+      </div> <!-- / .row -->
+      <div class="row">
+        <div class="col-12 col-md-6 col-lg-4 text-center aos-init aos-animate" data-aos="fade-up">
+            
+          <!-- Icon -->
+          <div class="icon icon-lg mb-4">
+            <img src="https://firebasestorage.googleapis.com/v0/b/jetgreen-98863.appspot.com/o/tf.png?alt=media&token=42d60817-59bd-4ca8-8ea9-23616f75ff41" alt="..." class="img-fluid">
+          </div>
+
+          <!-- Heading -->
+          <h3 class="font-weight-bold">
+            New Skills
+          </h3>
+
+          <!-- Text -->
+          <p class="text-muted mb-8">
+            Tenserflow, Deeplearning, Computer Vision etc become easeir than ever 
+          </p>
+
+        </div>
+        <div class="col-12 col-md-6 col-lg-4 text-center aos-init aos-animate" data-aos="fade-up">
+
+          <!-- Icon -->
+          <div class="icon icon-lg mb-4">
+            <img src="https://firebasestorage.googleapis.com/v0/b/jetgreen-98863.appspot.com/o/photoshop.png?alt=media&token=f33c6634-06af-45dd-aca1-e5ea0eaae01c" alt="..." class="img-fluid">
+            
+          </div>
+
+          <!-- Heading -->
+          <h3 class="font-weight-bold">
+            Graphic Designing
+          </h3>
+
+          <!-- Text -->
+          <p class="text-muted mb-8 mb-lg-0">
+            Photoshop:One stop solution for my graphic design needs
+          </p>
+
+        </div>
+        <div class="col-12 col-md-6 col-lg-4 text-center aos-init aos-animate" data-aos="fade-up">
+            
+          <!-- Icon -->
+          <div class="icon icon-lg mb-4">
+            <img src="https://firebasestorage.googleapis.com/v0/b/jetgreen-98863.appspot.com/o/figma.png?alt=media&token=c4316533-85f6-492d-9a5a-4f834666166d" alt="..." class="img-fluid">
+          </div>
+
+          <!-- Heading -->
+          <h3 class="font-weight-bold">
+            UI/UX
+          </h3>
+
+          <!-- Text -->
+          <p class="text-muted mb-8 mb-md-0">
+            Fantastic solution to design beautiful UI/UX in cloud with real time collaboration
+          </p>
+
+        </div>
+        <div class="col-12 col-md-6 col-lg-4 text-center aos-init aos-animate" data-aos="fade-up">
+          
+          <!-- Icon -->
+          <div class="icon icon-lg mb-4">
+            <img src="https://firebasestorage.googleapis.com/v0/b/jetgreen-98863.appspot.com/o/nodejs.png?alt=media&token=c2c4db1c-c9bf-417b-a93e-48db58628f90" alt="..." class="img-fluid">
+          </div>
+
+          <!-- Heading -->
+          <h3 class="font-weight-bold">
+            Backend
+          </h3>
+
+          <!-- Text -->
+          <p class="text-muted mb-8">
+            NodeJs is Lit, This site is made with Django. Loved it.
+          </p>
+
+        </div>
+        <div class="col-12 col-md-6 col-lg-4 text-center aos-init aos-animate" data-aos="fade-up">
+            
+          <!-- Icon -->
+          <div class="icon icon-lg mb-4">
+            <img src="https://firebasestorage.googleapis.com/v0/b/jetgreen-98863.appspot.com/o/aws.png?alt=media&token=660f00df-83d0-4087-94c5-9b65c47b892a" alt="..." class="img-fluid">
+          </div>
+
+          <!-- Heading -->
+          <h3 class="font-weight-bold">
+            Cloud
+          </h3>
+
+          <!-- Text -->
+          <p class="text-muted mb-8">
+            Everything is migrating to the cloud right? Thanks to GitHub Student pack
+          </p>
+
+        </div>
+        <div class="col-12 col-md-6 col-lg-4 text-center aos-init aos-animate" data-aos="fade-up">
+            
+          <!-- Icon -->
+          <div class="icon icon-lg mb-4">
+            <img src="https://firebasestorage.googleapis.com/v0/b/jetgreen-98863.appspot.com/o/rasp.png?alt=media&token=a3392c6f-197c-4b01-a5f2-7d84b572de32" alt="..." class="img-fluid">
+
+          <!-- Heading -->
+          <h3 class="font-weight-bold">
+            Embedded
+          </h3>
+
+          <!-- Text -->
+          <p class="text-muted mb-0">
+            The language of hardware
+          </p>
+
+        </div>
+      </div> <!-- / .row -->
+    </div> <!-- / .container -->
+  </section>
+  <!-- <section class="py-10 py-md-13 bg-gray-200 bg-between" style="background-image: url(
+    assets/img/illustrations/illustration-1-cropped.png), url(assets/img/illustrations/illustration-3-cropped.png);">
+    <div class="container">
+      <div class="row justify-content-center">
+        <div class="col-12 col-md-10 col-lg-8 text-center">
+          
+          <!-- Heading -->
+          <!-- <h2 class="font-weight-bold">
+            View My Projects
+          </h2> -->
+
+          <!-- Text -->
+          <!-- <p class="font-size-lg text-muted mb-8 px-lg-9">
+            We can help you build a better business faster. Tried and true systems for projects small and large.
+          </p> -->
+
+          <!-- Button -->
+          <!-- <a href="{% url 'project_list' %}" class="btn btn-primary-desat lift">
+            Projects
+          </a> -->
+
+        <!-- </div>
+      </div> <!-- / .row -->
+    <!-- </div> <!-- / .container -->
+  <!-- </section> --> 
 {% endblock %}
