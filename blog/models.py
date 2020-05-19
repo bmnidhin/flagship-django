@@ -4,7 +4,7 @@
 from django.conf import settings
 from django.db import models
 from django.utils import timezone
-
+from taggit.managers import TaggableManager
 
 
 class Post(models.Model):
@@ -16,7 +16,10 @@ class Post(models.Model):
     caption = models.CharField(max_length=400, null = True, blank = True)
     short = models.CharField(max_length=400, null = True, blank = True)
     text = models.TextField()
-    
+
+    tags = TaggableManager(verbose_name="Tags", help_text="A comma-separated list of tags.", through=None, blank=False,related_name='blotags')
+
+
     title_two = models.CharField(max_length=200, null = True, blank = True)
     text_two = models.TextField(null = True, blank = True)
     title_Three = models.CharField(max_length=200, null = True, blank = True)

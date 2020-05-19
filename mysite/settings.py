@@ -28,7 +28,7 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SECRET_KEY = 'yxa9&006nf7u$cn1j#w3shr(q33uuawd=wa12-4s8m=@9yucxy'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True
 
 
 TIME_ZONE = 'Asia/Kolkata'
@@ -50,6 +50,7 @@ INSTALLED_APPS = [
     'blog.apps.BlogConfig',
     'projects',
     'design',
+    'taggit',
 ]
 
 MIDDLEWARE = [
@@ -71,7 +72,7 @@ ROOT_URLCONF = 'mysite.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': [os.path.join(BASE_DIR, 'templates')],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -86,7 +87,13 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'mysite.wsgi.application'
 
-
+# EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+EMAIL_HOST = 'smtp.gmail.com' # mail service smtp
+EMAIL_HOST_USER = 'nidhinbm5@gmail.com' # email id
+EMAIL_HOST_PASSWORD = 'glowitorblowit' #password
+EMAIL_PORT = 587
+EMAIL_USE_TLS = True
 # Database
 # https://docs.djangoproject.com/en/2.2/ref/settings/#databases
 
@@ -158,6 +165,8 @@ USE_L10N = True
 USE_TZ = True
 
 
+
+LOGIN_REDIRECT_URL = '/'
 
 
 # Static files (CSS, JavaScript, Images)

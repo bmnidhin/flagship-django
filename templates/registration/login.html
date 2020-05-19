@@ -1,0 +1,109 @@
+{% extends "blog/base.html" %}
+
+{% block content %}
+<section class="section-border border-primary">
+  <div class="container d-flex flex-column">
+    <div class="row align-items-center justify-content-center no-gutters min-vh-100">
+      <div class="col-12 col-md-5 col-lg-4 py-8 py-md-11">
+        
+        <!-- Heading -->
+        <h1 class="mb-0 font-weight-bold text-center">
+          Sign in
+        </h1>
+
+        <!-- Text -->
+        <p class="mb-6 text-center text-muted">
+          Simplify your workflow in minutes.
+        </p>
+        {% if form.errors %}
+         <p>Your username and password didn't match. Please try again.</p>
+        {% endif %}
+        {% if next %}
+        {% if user.is_authenticated %}
+        <p>Your account doesn't have access to this page. To proceed,
+         please login with an account that has access.</p>
+         {% else %}
+         <p>Please login to see this page.</p>
+        {% endif %}
+        {% endif %}
+        {% if messages %}
+        <ul>
+            {% for message in messages %}
+            <li>{{ message }}</li>
+            {% endfor %}
+        </ul>
+    {% endif %}
+
+        <!-- Form -->
+        <form class="mb-6"method="post" action="{% url 'login' %}">
+          {% csrf_token %}
+          <!-- Email -->
+          <div class="form-group">
+            <label for="email">
+              {{ form.username.label_tag }}
+            </label>
+           {{ form.username}}
+            
+          </div>
+
+          <!-- Password -->
+          <div class="form-group mb-5">
+            <label for="password">
+              {{ form.password.label_tag }}
+            </label>
+            {{ form.password}}
+            
+            {# Assumes you setup the password_reset view in your URLconf #}
+            <p><a href="{% url 'password_reset' %}">Lost password?</a></p>
+          </div>
+
+          <!-- Submit -->
+          <button class="btn btn-block btn-primary" type="submit" value="login">
+            Sign in
+          </button>
+          <!-- <input type="submit" value="login" /> -->
+    <input type="hidden" name="next" value="{{ next }}" />
+  </form>
+  
+ 
+        </form>
+
+        <!-- Text -->
+        <p class="mb-0 font-size-sm text-center text-muted">
+          Don't have an account yet <a href="{% url 'post_tom' %}">Sign up</a>.
+        </p>
+
+      </div>
+    </div> <!-- / .row -->
+  </div> <!-- / .container -->
+</section>
+   <style>
+#id_username,#id_password{display: block;
+width: 100%;
+height: calc(1.6em + 1.625rem + 2px);
+padding: .8125rem 1.25rem;
+font-size: 1.0625rem;
+font-weight: 400;
+line-height: 1.6;
+color: #161c2d;
+background-color: #fff;
+background-clip: padding-box;
+border: 1px solid #f1f4f8;
+border-radius: .375rem;
+box-shadow: none;
+-webkit-transition: border-color .15s ease-in-out,box-shadow .15s ease-in-out;
+transition: border-color .15s ease-in-out,box-shadow .15s ease-in-out;}
+
+   </style>
+<script>
+ document.getElementById("id_username").placeholder= "username";
+ document.getElementById("id_password").placeholder= "password";
+
+
+</script>
+{% endblock %}
+
+
+
+
+

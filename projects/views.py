@@ -11,4 +11,6 @@ def post_list(request):
 #     return render(request, 'projects/post_detail.html', {'post': post})
 def post_detail(request, slug):
     post = get_object_or_404(Post, slug=slug)
-    return render(request, 'projects/post_detail.html', {'post': post})
+    post_related = Post.objects.filter(published_date__lte=timezone.now()).order_by('?')[0:3]
+    return render(request, 'projects/post_detail.html', {'post': post,'post_related': post_related}) 
+    

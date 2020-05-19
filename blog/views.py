@@ -7,10 +7,14 @@ from django.views.generic import View
 from django.http import HttpResponse # Add this
 
 from .forms import ContactForm # Add this
+from taggit.managers import TaggableManager
+from django.contrib.auth.decorators import login_required
 
 def post_list(request):
     posts = Post.objects.filter(published_date__lte=timezone.now()).order_by('-published_date')
     return render(request, 'blog/post_list.html', {'posts': posts})
+
+
     
 def post_home(request):
     posts = Post.objects.filter(published_date__lte=timezone.now()).order_by('-published_date')[0:3]
@@ -29,7 +33,9 @@ def post_me(request):
 #     return render(request, 'blog/post_detail.html', {'post': post})
 def post_detail(request, slug):
     post = get_object_or_404(Post, slug=slug)
-    return render(request, 'blog/post_detail.html', {'post': post})
+    # post_instance = Post.objects.get_or_create()
+    post_related = Post.objects.filter(published_date__lte=timezone.now()).order_by('?')[0:3]
+    return render(request, 'blog/post_detail.html', {'post': post,'post_related': post_related})
 
 # def detale_bajki(request, slug):
 #     detale_bajki = get_object_or_404(Wpisy, slug=slug)
