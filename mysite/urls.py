@@ -10,6 +10,7 @@ urlpatterns = [
     path('', include('blog.urls')),
     path('accounts/', include('django.contrib.auth.urls')),
     path('accounts/create', include('tom.urls')),
+    path('accounts/social', include('allauth.urls')),
     # path('accounts/login/', views.LoginView.as_view(), name='login'),
     # path('accounts/logout/', views.LogoutView.as_view(next_page='/'), name='logout'),
     path('projects/', include('projects.urls')),

@@ -28,7 +28,7 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SECRET_KEY = 'yxa9&006nf7u$cn1j#w3shr(q33uuawd=wa12-4s8m=@9yucxy'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True
 
 
 TIME_ZONE = 'Asia/Kolkata'
@@ -42,11 +42,16 @@ ALLOWED_HOSTS = ['*']
 
 INSTALLED_APPS = [
     'django.contrib.admin',
-    'django.contrib.auth',
+    'django.contrib.auth',#builtin-auth
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'django.contrib.sites', #auth
+    'allauth',#auth
+    'allauth.account',#auth
+    'allauth.socialaccount',#auth
+    'allauth.socialaccount.providers.google',#auth
     'blog.apps.BlogConfig',
     'projects',
     'design',
@@ -66,6 +71,33 @@ MIDDLEWARE = [
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
     
 ]
+
+AUTHENTICATION_BACKENDS = (
+ 'django.contrib.auth.backends.ModelBackend',
+ 'allauth.account.auth_backends.AuthenticationBackend',
+ )
+
+SITE_ID = 1
+LOGIN_REDIRECT_URL = '/'
+
+SOCIALACCOUNT_PROVIDERS = {
+    'google': {
+        'SCOPE': [
+            'profile',
+            'email',
+        ],
+        'AUTH_PARAMS': {
+            'access_type': 'online',
+        }
+    }
+}
+
+
+
+
+
+
+
 
 ROOT_URLCONF = 'mysite.urls'
 
@@ -166,7 +198,7 @@ USE_TZ = True
 
 
 
-LOGIN_REDIRECT_URL = '/'
+
 
 
 # Static files (CSS, JavaScript, Images)

@@ -148,8 +148,12 @@
            {% if user.is_authenticated %}
            Loginiined <br>
            <p class="top-menu">Hello {{ user.username }} <small>(<a href="{% url 'logout' %}">Log out</a>)</small></p>
+           <img src="{{ user.socialaccount_set.all.0.get_avatar_url }}" alt="not found">
        {% else %}
-           <a href="{% url 'login' %}" class="top-menu">Poi Login Cheyyedo</a>
+           <a href="{% url 'login' %}?next={{request.path}}" class="top-menu">
+          
+            
+            Poi Login Cheyyedo</a>
        {% endif %}
 
 
