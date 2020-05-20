@@ -2,6 +2,7 @@
 
 
 {% extends 'blog/base.html' %}
+{% block head_title %}All Blog Posts{% endblock %}
 
 {% block content %}
 <section class="pt-8 pt-md-11">
@@ -31,9 +32,9 @@
               <div class="col-12">
                 
                 <!-- Badge -->
-                <span class="badge badge-pill badge-gray-600 badge-float badge-float-outside">
+                <!-- <span class="badge badge-pill badge-gray-600 badge-float badge-float-outside">
                   <span class="h6 text-uppercase">Featured</span>
-                </span>
+                </span> -->
 
               </div>
               <a class="col-12 col-md-6 order-md-2 bg-cover card-img-right" style="background-image: url({{post.image_link}});min-height: 200px;" href="#!">
