@@ -1,6 +1,7 @@
 
 {% extends "blog/base.html" %}
 
+{% load i18n %}
 {% block content %}
 
 <div class="row align-items-center justify-content-center no-gutters min-vh-100">
@@ -13,7 +14,7 @@
 
     <!-- Text -->
     <p class="mb-6 text-center text-muted">
-    {% blocktrans with provider_name=account.get_provider.name site_name=site.name %}You are about to use your {{provider_name}} account to login. As a final step, please complete the following form:{% endblocktrans %}
+        <p>{% blocktrans with provider_name=account.get_provider.name site_name=site.name %}You are about to use your {{provider_name}} account to login. As a final step, please complete the following form:{% endblocktrans %}</p>
     </p>
     <form class="signup mb-6" id="signup_form" method="post" action="{% url 'socialaccount_signup' %}">
       {% csrf_token %}
