@@ -1,0 +1,58 @@
+
+{% extends "blog/base.html" %}
+
+{% block content %}
+
+<div class="row align-items-center justify-content-center no-gutters min-vh-100">
+  <div class="col-12 col-md-5 col-lg-4 py-8 py-md-11">
+    
+    <!-- Heading -->
+    <h1 class="mb-0 font-weight-bold text-center">
+      Password reset
+    </h1>
+
+    <!-- Text -->
+    <p class="mb-6 text-center text-muted">
+    {% blocktrans with provider_name=account.get_provider.name site_name=site.name %}You are about to use your {{provider_name}} account to login. As a final step, please complete the following form:{% endblocktrans %}
+    </p>
+    <form class="signup mb-6" id="signup_form" method="post" action="{% url 'socialaccount_signup' %}">
+      {% csrf_token %}
+      {{ form.as_p }}
+      {% if redirect_field_value %}
+      <input type="hidden" name="{{ redirect_field_name }}" value="{{ redirect_field_value }}" />
+      {% endif %}
+      <button class="btn btn-block btn-primary" type="submit">{% trans "Sign Up" %} &raquo;</button>
+    </form>
+    <!-- Form -->
+   
+
+    <!-- Text -->
+    
+
+  </div>
+</div>
+<style>
+  input{display: block;
+  width: 100%;
+  height: calc(1.6em + 1.625rem + 2px);
+  padding: .8125rem 1.25rem;
+  font-size: 1.0625rem;
+  font-weight: 400;
+  line-height: 1.6;
+  color: #161c2d;
+  background-color: #fff;
+  background-clip: padding-box;
+  border: 1px solid #f1f4f8;
+  border-radius: .375rem;
+  box-shadow: none;
+  -webkit-transition: border-color .15s ease-in-out,box-shadow .15s ease-in-out;
+  transition: border-color .15s ease-in-out,box-shadow .15s ease-in-out;}
+  
+     </style>
+  <script>
+   document.getElementById("id_email").placeholder= "Enter Your Email";
+   document.getElementById("id_username").placeholder= "username";
+  
+  
+  </script>
+{% endblock %}

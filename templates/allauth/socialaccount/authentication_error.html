@@ -1,0 +1,37 @@
+{% extends "socialaccount/base.html" %}
+
+{% load i18n %}
+
+{% block head_title %}{% trans "Social Network Login Failure" %}{% endblock %}
+
+{% block content %}
+
+<section class="section-border border-primary">
+    <div class="container d-flex flex-column">
+      <div class="row align-items-center justify-content-center no-gutters min-vh-100">
+        <div class="col-12 col-md-5 col-lg-4 py-8 py-md-11">
+          
+          <!-- Heading -->
+          <h1 class="display-3 font-weight-bold text-center">
+            {% trans "Social Network Login Failure" %}
+          </h1>
+
+          <!-- Text -->
+          <p class="mb-5 text-center text-muted">
+            {% trans "An error occurred while attempting to login via your social network account." %}
+          </p>
+
+          <!-- Link -->
+          <div class="text-center">
+            <a class="btn btn-primary" href="{% url 'login' %}">
+              Login Again?
+            </a>
+          </div>
+
+        </div>
+      </div> <!-- / .row -->
+    </div> <!-- / .container -->
+  </section>
+
+
+{% endblock %}
