@@ -53,9 +53,13 @@ INSTALLED_APPS = [
     'allauth.socialaccount',#auth
     'allauth.socialaccount.providers.google',#auth
     'blog.apps.BlogConfig',
+    'django_summernote',
     'projects',
     'design',
     'taggit',
+    'disqus',
+    'threadedcomments',
+    'django_comments',
 ]
 
 MIDDLEWARE = [
@@ -76,9 +80,10 @@ AUTHENTICATION_BACKENDS = (
  'django.contrib.auth.backends.ModelBackend',
  'allauth.account.auth_backends.AuthenticationBackend',
  )
-
+DISQUS_WEBSITE_SHORTNAME = 'getgreen-1'
 SITE_ID = 1
 LOGIN_REDIRECT_URL = '/'
+COMMENTS_APP = 'threadedcomments'
 
 SOCIALACCOUNT_PROVIDERS = {
     'google': {
@@ -119,11 +124,16 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'mysite.wsgi.application'
 
+
+
+
+
+
 # EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
 EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
 EMAIL_HOST = 'smtp.gmail.com' # mail service smtp
 EMAIL_HOST_USER = 'nidhinbm5@gmail.com' # email id
-EMAIL_HOST_PASSWORD = 'pukiuhkylkydhwgb' #password
+EMAIL_HOST_PASSWORD = 'password' #password
 EMAIL_PORT = 587
 EMAIL_USE_TLS = True
 # Database

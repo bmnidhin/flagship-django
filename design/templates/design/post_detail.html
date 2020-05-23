@@ -46,15 +46,27 @@
 
             </li>
             <li class="list-group-item">
+              
             {% if post.button_text%}
-           
+            {% if user.is_authenticated %}
+
             <div class="text-center text-md-left">
               <a href="{{post.button_link}}" class="btn btn-primary shadow lift mr-1" data-toggle="smooth-scroll"target="blank">
                 {{post.button_text}}<i class="fe fe-arrow-right d-none d-md-inline ml-3"></i>
               </a>
              
             </div>
+
+            {% else %}
+            <div class="text-center text-md-left">
+              <a href="{% url 'login' %}" class="btn btn-primary shadow lift mr-1" data-toggle="smooth-scroll"target="blank">
+                Login to Edit This File <i class="fe fe-arrow-right d-none d-md-inline ml-3"></i>
+              </a>
+             
+            </div>
+            
   
+            {% endif %}
             {% endif %}
             </li>
           </ul>
@@ -69,6 +81,10 @@
           <a class="d-block" data-fancybox="" data-width="840" data-heigt="1000" href="#">
             <img class="img-fluid rounded" src="{{post.file_image}}" alt="...">
           </a>
+          <br>
+          <h3>Post a Comment</h3>
+          {% load disqus_tags %}
+              {% disqus_show_comments %}
           
       
         </section>

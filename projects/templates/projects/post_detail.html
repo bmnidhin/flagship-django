@@ -122,62 +122,10 @@
       <div class="row justify-content-center">
         <div class="col-12 col-md-10 col-lg-9 col-xl-8">
           <!-- para1 -->
-          <P class="mb-0">{{post.text}}</P>
+          <P class="mb-0">{{post.text| safe }}</P>
           
 
-           <!-- para2 -->
-          <br>
-          {% if post.title_two %}
-          <h2>{{post.title_two}}</h2>
-            
-         
-         
-          {% endif %}
           
-          <p class="mb-0">
-          {% if post.text_two %}
-           {{post.text_two}}
-           {% endif %}
-          </p>
-         
-
-          <!-- para2 -->
-          <br>
-          {% if post.title_three %}
-          <h2>{{post.title_three}}</h2>
-          
-          
-         {% endif %}
-        <p class="mb-0">
-          {% if post.text_three%}
-          {{post.text_three}}
-          {% endif %}
-        </p>
-
-        <br>
-        {% if post.title_four %}
-          <h2>{{post.title_four}}</h2>
-          
-          
-         {% endif %}
-        <p class="mb-0">
-          {% if post.text_four %}
-          {{post.text_four}}
-          {% endif %}
-        </p>
-
-
-        <br>
-        {% if post.title_five %}
-          <h2>{{post.title_five}}</h2>
-          
-          
-         {% endif %}
-        <p class="mb-0">
-          {% if post.text_five %}
-          {{post.text_five}}
-          {% endif %}
-        </p>
           <p>
           {% if post.button_text%}
            
@@ -187,11 +135,14 @@
             </a>
            
           </div>
+          <br><br>
+          
 
         
           {% endif %}
           
-
+          {% load disqus_tags %}
+              {% disqus_show_comments %}
 
           
           </p>

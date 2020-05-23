@@ -1,0 +1,359 @@
+{% extends 'blog/base.html' %}
+{% block head_title %}My Account{% endblock %}
+
+{% block content %}
+<header class="bg-dark pt-7 pb-11 d-md-block">
+    <div class="container-md">
+      <div class="row align-items-center">
+        <div class="col">
+
+          <!-- Heading -->
+          <h1 class="font-weight-bold text-white mb-2">
+            My Account
+          </h1>
+
+          <!-- Text -->
+          <p class="font-size-lg text-white-75 mb-0">
+            Hi<a class="text-reset"> @{{user.username}}</a>
+          </p>
+
+        </div>
+        <div class="col-auto">
+
+          <!-- Button -->
+          <button class="btn btn-sm btn-gray-300-20"style="background-color: rgba(217,226,239,.25);color: #fff;">
+            <a href="{% url 'logout' %}"class="text-decoration-none"style="color: #fff;">Logout</a>
+          </button>
+
+        </div>
+      </div> <!-- / .row -->
+    </div> <!-- / .container -->
+  </header>
+  <main class="pb-8 pb-md-11 mt-md-n6 pt-2">
+    <div class="container-md">
+      <div class="row">
+        
+        <div class="col-12 col-md-12">
+
+            <!-- Card -->
+            <div class="card card-bleed shadow-light-lg mb-6">
+              <div class="card-header">
+                <div class="row align-items-center">
+                    <div class="col">
+  
+                      <!-- Heading -->
+                      <h4 class="mb-0">
+                        Basic Details
+                      </h4>
+  
+                    </div>
+                    <div class="col-auto mr-n5">
+  
+                      <!-- Text -->
+                      
+  
+                    </div>
+                    <div class="col-auto">
+  
+                        <small class="text-gray-700">
+                            Requred?
+                          </small>
+  
+                    </div>
+                  </div>
+
+              </div>
+              <div class="card-body">
+
+                <!-- List group -->
+                <div class="list-group list-group-flush">
+                  <div class="list-group-item">
+                    <div class="row align-items-center">
+                      <div class="col">
+
+                        <!-- Heading -->
+                        <p class="mb-0">
+                          Username
+                        </p>
+
+                        <!-- Text -->
+                        <small class="text-gray-700">
+                          {{user.username}}
+                        </small>
+
+                      </div>
+                      <div class="col-auto">
+
+                        <!-- Switch -->
+                       
+
+                      </div>
+                    </div>
+                  </div>
+                  <div class="list-group-item">
+                    <div class="row align-items-center">
+                      <div class="col">
+
+                        <!-- Heading -->
+                        <p class="mb-0">
+                          Email
+                        </p>
+
+                        <!-- Text -->
+                        <small class="text-gray-700">
+                          {{user.email}}
+                        </small>
+
+                      </div>
+                      <div class="col-auto">
+
+                        <!-- Switch -->
+                       
+
+                      </div>
+                    </div>
+                  </div>
+                  {% if user.first_name %}
+                  <div class="list-group-item">
+                    <div class="row align-items-center">
+                      <div class="col">
+
+                        <!-- Heading -->
+                        <p class="mb-0">
+                          Name
+                        </p>
+
+                        <!-- Text -->
+                        <small class="text-gray-700">
+                          {{user.first_name}} {{user.last_name}}
+                        </small>
+
+                      </div>
+                      <div class="col-auto">
+
+                        <!-- Switch -->
+                       
+
+                      </div>
+                    </div>
+                  </div>
+                  {% endif %}
+                  <div class="list-group-item">
+                    <div class="row align-items-center">
+                      <div class="col">
+
+                        <!-- Heading -->
+                        <p class="mb-0">
+                          Last Login
+                        </p>
+
+                        <!-- Text -->
+                        <small class="text-gray-700">
+                          {{user.last_login}}
+                        </small>
+
+                      </div>
+                      <div class="col-auto">
+
+                        <!-- Switch -->
+                       
+
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+              </div>
+            </div>
+
+            <!-- Card -->
+            <div class="card card-bleed shadow-light-lg mb-6">
+              <div class="card-header">
+
+                <!-- Heading -->
+                <h4 class="mb-0">
+                  Your media
+                </h4>
+
+              </div>
+              <div class="card-body">
+
+                <!-- List group -->
+                <div class="list-group list-group-flush">
+                  <div class="list-group-item">
+                    <div class="row align-items-center">
+                      <div class="col-auto">
+
+                        <!-- Avatar -->
+                        <div class="avatar avatar-xl">
+                          <img class="avatar-img rounded-circle" src="
+                          {% if user.socialaccount_set.all.0.get_avatar_url %}
+                          {{ user.socialaccount_set.all.0.get_avatar_url }}
+                          {% else %}
+                          https://landkit.goodthemes.co/assets/img/avatars/avatar-1.jpg
+                          {% endif %}" alt="...">
+                        </div>
+
+                      </div>
+                      <div class="col ml-n5">
+
+                        <!-- Heading -->
+                        <p class="mb-0">
+                          Your avatar
+                        </p>
+
+                        <!-- Text -->
+                        <small class="text-gray-700">
+                            {% if user.socialaccount_set.all.0.get_avatar_url %}
+                            From your social account
+                            {% else %}
+                            Your default avathar. Link your social media account to change it
+                            {% endif %}
+                        </small>
+
+
+                      </div>
+                      <div class="col-12 col-md-auto">
+
+                        <!-- Button -->
+                        <!-- <button class="btn btn-xs btn-block btn-primary mt-5 mt-md-0">
+                          Upload
+                        </button> -->
+
+                      </div>
+                    </div>
+                  </div>
+                 
+                </div>
+
+              </div>
+            </div>
+
+            <!-- Card -->
+            <div class="card card-bleed shadow-light-lg mb-8">
+              <div class="card-header">
+
+                <!-- Title -->
+                <h4 class="mb-0">
+                  Account
+                </h4>
+
+              </div>
+              <div class="card-body">
+
+                <!-- List group -->
+                <div class="list-group list-group-flush">
+                  <div class="list-group-item">
+                    <div class="row align-items-center">
+                      <div class="col">
+                        {% load i18n %}
+                        {% csrf_token %}
+                        <!-- Heading -->
+                        <p class="mb-0">
+                          Your Email Addresses
+                        </p>
+
+                        <!-- Text -->
+                        <small class="text-gray-700">
+                            {% for emailaddress in user.emailaddress_set.all %}
+                            <div class="ctrlHolder">
+                                  <label for="email_radio_{{forloop.counter}}" class="{% if emailaddress.primary %}primary_email{%endif%}">
+                            
+                                  <span id="email_radio_{{forloop.counter}}"  name="email"  value="{{emailaddress.email}}"/>
+                            
+                            {{ emailaddress.email }}
+                                {% if emailaddress.verified %}
+                                <span class="verified text-success">  {% trans "Verified" %}</span>
+                                {% else %}
+                                <span class="unverified text-danger">  {% trans "Unverified" %}</span>
+                                {% endif %}
+                                  {% if emailaddress.primary %}<span class="primary">{% trans "Primary" %}</span>{% endif %}
+                            </label>
+                            </div>
+                              {% endfor %}
+                        </small>
+
+                      </div>
+                      <div class="col-auto">
+                        <button class="btn btn-xs btn-block btn-primary mt-5 mt-md-0"name="action_add" type="submit">
+                           Verify
+                          </button>
+               
+                        <!-- Switch -->
+                        
+
+                      </div>
+                    </div>
+                  </div>
+                  <div class="list-group-item">
+                    <div class="row align-items-center">
+                     
+                      <div class="col">
+
+                        <!-- Heading -->
+                        <p class="mb-0">
+                          Account Created
+                        </p>
+
+                        <!-- Text -->
+                        <small class="text-gray-700">
+                            {{user.date_joined}}
+                        </small>
+
+
+                      </div>
+                      <div class="col-12 col-md-auto">
+
+                        <!-- Button -->
+                        <!-- <button class="btn btn-xs btn-block btn-primary mt-5 mt-md-0">
+                          Upload
+                        </button> -->
+
+                      </div>
+                    </div>
+                  </div>
+                  <div class="list-group-item">
+                    <div class="row align-items-center">
+                     
+                      <div class="col">
+
+                        <!-- Heading -->
+                        <p class="mb-0">
+                          Change Password
+                        </p>
+
+                        <!-- Text -->
+                        <small class="text-gray-700">
+                            
+                        </small>
+
+
+                      </div>
+                      <div class="col-12 col-md-auto">
+
+                        <!-- Button -->
+                        <button class="btn btn-xs btn-block btn-primary mt-5 mt-md-0">
+                          Change
+                        </button>
+
+                      </div>
+                    </div>
+                  </div>
+                  
+                
+                  </div>
+                </div>
+
+              </div>
+            </div>
+
+            <!-- Text -->
+            <p class="text-center mb-0">
+              <small class="text-muted">If you no longer want to use Landkit, you can <a class="text-danger" href="#!">delete your account</a>.</small>
+            </p>
+
+          </div>
+      </div> <!-- / .row -->
+    <!-- / .container -->
+  </main>
+  {% endblock %}

@@ -20,20 +20,7 @@ class Post(models.Model):
     created_date = models.DateTimeField(default=timezone.now)
     published_date = models.DateTimeField(blank=True, null=True)
 
-    related_one_title = models.CharField(max_length=200, null = True, blank = True)
-    related_one_Photo = models.CharField(max_length=200, null = True, blank = True)
-    related_one_category = models.CharField(max_length=200, null = True, blank = True)
-    related_one_link = models.CharField(max_length=200, null = True, blank = True)
-
-    related_two_title = models.CharField(max_length=20, null = True, blank = True)
-    related_two_Photo = models.CharField(max_length=200, null = True, blank = True)
-    related_two_category = models.CharField(max_length=200, null = True, blank = True)
-    related_two_link = models.CharField(max_length=200, null = True, blank = True)
-
-    related_three_title = models.CharField(max_length=20, null = True, blank = True)
-    related_three_Photo = models.CharField(max_length=200, null = True, blank = True)
-    related_three_category = models.CharField(max_length=200, null = True, blank = True)
-    related_three_link = models.CharField(max_length=200, null = True, blank = True)
+    
 
     def publish(self):
         self.published_date = timezone.now()
